@@ -38,6 +38,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.t4newsapp.components.NewsItem
+import com.example.t4newsapp.models.news
 import com.example.t4newsapp.ui.theme.T4NewsAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -57,17 +59,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun PantallaNoticias() {
 
-    val noticiasCarrusel: List<String> = listOf(
+    val noticiasCarrusel = listOf(
         "El presidente de EE.UU. no muestra signos de arrepentimiento...",
         "Bañarse en la piscina del desierto de Cleopatra",
         "Gigantes tecnológicos"
-    )
-
-    val noticiasGrid = listOf(
-        "El presidente de EE.UU. no muestra signos de arrepentimiento",
-        "Bañarse en la piscina del desierto de Cleopatra",
-        "Gigantes tecnológicos",
-        "El rover de Marte envía"
     )
 
     Column(
@@ -76,7 +71,6 @@ fun PantallaNoticias() {
             .padding(16.dp)
     ) {
 
-        // Buscador
         OutlinedTextField(
             value = "",
             onValueChange = {},
@@ -90,7 +84,6 @@ fun PantallaNoticias() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Tabs
         Row(
             horizontalArrangement = Arrangement.spacedBy(20.dp)
         ) {
@@ -101,7 +94,6 @@ fun PantallaNoticias() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Título
         Text(
             text = "Últimas noticias",
             style = MaterialTheme.typography.titleLarge
@@ -109,10 +101,10 @@ fun PantallaNoticias() {
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        // Carrusel
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+
             items(noticiasCarrusel) { noticia ->
 
                 Box(
@@ -151,48 +143,21 @@ fun PantallaNoticias() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Segundo título
         Text(
             text = "Alrededor del mundo",
             style = MaterialTheme.typography.titleLarge
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
-        // Grid de noticias
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             verticalArrangement = Arrangement.spacedBy(12.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier.fillMaxHeight()
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
 
-            items(noticiasGrid) { noticia ->
-
-                Box(
-                    modifier = Modifier
-                        .height(180.dp)
-                        .clip(RoundedCornerShape(25.dp))
-                        .background(Color.LightGray)
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .align(Alignment.BottomStart)
-                            .background(
-                                Color.White.copy(alpha = 0.8f),
-                                RoundedCornerShape(
-                                    topStart = 20.dp,
-                                    topEnd = 20.dp
-                                )
-                            )
-                            .padding(10.dp)
-                    ) {
-                        Text(
-                            text = noticia,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
-                }
+            items(news) { item ->
+                NewsItem(item)
             }
         }
     }
