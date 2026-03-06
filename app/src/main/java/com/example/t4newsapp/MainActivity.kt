@@ -23,6 +23,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -77,7 +78,7 @@ fun PantallaNoticias() {
             onValueChange = {},
             placeholder = { Text("Buscar") },
             leadingIcon = {
-                Icon(Icons.Default.Search, contentDescription = "Buscar")
+                Icon(Icons.Default.Home, contentDescription = "Buscar")
             },
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(50.dp)
