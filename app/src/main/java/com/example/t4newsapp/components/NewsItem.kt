@@ -14,6 +14,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.t4newsapp.models.News
+import androidx.compose.foundation.Image
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 
 @Composable
 fun NewsItem(news: News) {
@@ -22,13 +25,20 @@ fun NewsItem(news: News) {
         modifier = Modifier
             .height(180.dp)
             .clip(RoundedCornerShape(25.dp))
-            .background(Color.LightGray)
     ) {
+
+        Image(
+            painter = painterResource(id = news.image),
+            contentDescription = news.new,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.matchParentSize()
+        )
+
         Box(
             modifier = Modifier
                 .align(Alignment.BottomStart)
                 .background(
-                    Color.White.copy(alpha = 0.8f),
+                    Color.LightGray,
                     RoundedCornerShape(
                         topStart = 20.dp,
                         topEnd = 20.dp

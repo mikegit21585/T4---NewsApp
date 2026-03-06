@@ -62,7 +62,8 @@ fun PantallaNoticias() {
     val noticiasCarrusel = listOf(
         "El presidente de EE.UU. no muestra signos de arrepentimiento...",
         "Bañarse en la piscina del desierto de Cleopatra",
-        "Gigantes tecnológicos"
+        "Gigantes tecnológicos",
+        "El rover de Marte envía"
     )
 
     Column(
